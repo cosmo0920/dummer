@@ -8,6 +8,10 @@ module Dummer
       reload
     end
 
+    def after_start
+      run if ServerEngine.windows?
+    end
+
     def reload
       setting = config[:setting]
       @generator = Generator.new(setting)
